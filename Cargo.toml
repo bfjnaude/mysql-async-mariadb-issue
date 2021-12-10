@@ -1,0 +1,16 @@
+[package]
+name = "mysql_driver_debug"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mysql_async = "0.28.1"
+tokio = { version = "1.6", features = ["full"] }
+
+[target.x86_64-unknown-linux-musl.dependencies]
+# Add openssl-sys as a direct dependency so we can force dependencies to staticly link to the openssl library.
+# https://github.com/sfackler/rust-openssl/issues/980
+openssl-sys = { version = "*", features = ["vendored"] }
+
